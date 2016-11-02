@@ -117,9 +117,6 @@ jQuery.fn.femanagerValidation = function() {
 			type: 'POST',
 			cache: false,
 			success: function(data) { // return values
-				if (countForSubmit) {
-					requestCallback.addCallbackToQueue(true);
-				}
 				if (data) {
 					try {
 						var json = $.parseJSON(data);
@@ -132,6 +129,9 @@ jQuery.fn.femanagerValidation = function() {
 						element.before(data)
 					}
 
+				}
+				if (countForSubmit) {
+					requestCallback.addCallbackToQueue(true);
 				}
 			},
 			error: function() {
